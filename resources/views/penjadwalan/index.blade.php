@@ -3,7 +3,7 @@
 @section('title', 'Penjadwalan')
 
 @push('style')
-<!-- CSS Libraries -->
+</style>
 @endpush
 
 @section('main')
@@ -16,6 +16,7 @@
                 <div class="breadcrumb-item">Penjadwalan</div>
             </div>
         </div>
+        
 
         <div class="section-body">
             <div class="row">
@@ -23,15 +24,15 @@
                     <div class="card">
                         <div class="card-body">
                             <a href="{{route('penjadwalan.create')}}" class="btn btn-primary mb-3">Tambah</a>
+                            {{-- <a href="{{ route('cetakPdf') }}" class="btn btn-info mb-3">Cetak</a> --}}
                             <div class="table-responsive">
-                                <table class="table table-striped table-md">
+                                <table class="table table-striped table-md" id="penjadwalan-table">
                                     <thead>
                                         <tr  class="text-small">
                                             <th>#</th>
                                             <th>Id Jadwal</th>
                                             <th>Tanggal</th>
                                             <th>Nama Alat</th>
-                                            <th>kategori Alat</th>
                                             <th>ID Alat</th>
                                             <th>Point Check</th>
                                             <th>Ruangan</th>
@@ -47,14 +48,21 @@
                                             <td>{{ $data->id_penjadwalan }}</td>
                                             <td>{{ $data->tanggal }}</td>
                                             <td>{{ $data->nama_alat }}</td>
-                                            <td>{{ $data->kategori_alat }}</td>
                                             <td>{{ $data->fperalatan->id_alat }}</td>
                                             <td>{{ $data->fpointCheck->nama_point_check }}</td>
                                             <td>{{ $data->ruangan }}</td>
                                             <td>{{ $data->tanggal_jadwal }}</td>
                                             <td>
-                                                <div class="badge badge-success">Open</div>
-                                            </td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-success dropdown-toggle" type="button" id="statusDropdown{{ $key }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Open
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="statusDropdown{{ $key }}">
+                                                        <a class="dropdown-item" href="#" onclick="setStatus('Closed', {{ $key }})">Closed</a>
+                                                        <a class="dropdown-item" href="#" onclick="setStatus('Open', {{ $key }})">Open</a>
+                                                    </div>
+                                                </div>
+                                            </td>                                            
                                             <td>
                                                 <a href="{{route('penjadwalan.edit',$data)}}"
                                                     class="btn btn-info btn-sm">
@@ -86,6 +94,19 @@
 @endsection
 
 @push('scripts')
+<script>
+     function setStatus(status, key) {
+        var badge = document.getElementById('statusDropdown' + key);
+        badge.innerHTML = status;
+        if (status === 'Closed') {
+            badge.classList.remove('btn-success');
+            badge.classList.add('btn-danger');
+        } else {
+            badge.classList.remove('btn-danger');
+            badge.classList.add('btn-success');
+        }
+    }
+</script>
 
 <form action="" id="delete-form" method="post">
     @method('delete')

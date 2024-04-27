@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PenjadwalanController;
+use App\Http\Controllers\PerbaikanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +39,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('perbaikan',  \App\Http\Controllers\PerbaikanController::class);
     Route::resource('laporan_penjadwalan',  \App\Http\Controllers\LaporanPenjadwalanController::class);
     Route::resource('laporan_perbaikan',  \App\Http\Controllers\LaporanPerbaikanController::class);
+
+    Route::post('/cetakpdfpenjadwalan', [PenjadwalanController::class, 'cetakPdfPenjadwalan'])->name('cetakPdfPenjadwalan');
+    Route::post('/cetakpdfperbaiki', [PerbaikanController::class, 'cetakPdfPerbaikan'])->name('cetakPdfPerbaikan');
 
     Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
 });

@@ -7,6 +7,8 @@ use App\Models\Penjadwalan;
 use App\Models\Peralatan;
 use App\Models\PointCheck;
 
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+
 class PenjadwalanController extends Controller
 {
     public function index()
@@ -21,7 +23,7 @@ class PenjadwalanController extends Controller
     {
         $peralatan = Peralatan::all();
         $pointCheck = PointCheck::all();
-        $idPenjadwalan = $this->generateIdPenjadwalan(); 
+        $idPenjadwalan = $this->generateIdPenjadwalan();
         return view('penjadwalan.create', [
             'peralatan' => $peralatan,
             'pointCheck' => $pointCheck,
@@ -64,6 +66,13 @@ class PenjadwalanController extends Controller
             ->with('success', 'Jadwal created successfully.');
     }
 
+    public function show($id)
+    {
+        $penjadwalan = Penjadwalan::findOrFail($id);
+        return view('penjadwalan.show', ['penjadwalan' => $penjadwalan]);
+    }
+
+
     public function edit($id)
     {
         $penjadwalan = Penjadwalan::findOrFail($id);
@@ -102,5 +111,31 @@ class PenjadwalanController extends Controller
 
         return redirect()->route('penjadwalan.index')
             ->with('success', 'Jadwal berhasil dihapus.');
+    }
+
+    public function cetakPdfPenjadwalan(Request $request)
+    {
+        // Validasi input tanggal
+        $request->validate([
+            'start_date' => 'required|date',
+            'end_date' => 'required|date'
+        ]);
+
+        // Ambil tanggal awal dan akhir dari input form
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+
+        // Filter data berdasarkan rentang tanggal
+        $penjadwalan = Penjadwalan::whereBetween('tanggal', [$startDate, $endDate])->get();
+
+        // Load view dengan data yang sudah difilter
+        $pdf = FacadePdf::loadView('penjadwalan.cetakpdfpenjadwalan', [
+            'penjadwalan' => $penjadwalan,
+            'startDate' => $startDate,
+            'endDate' => $endDate
+        ]);
+
+        // Download PDF
+        return $pdf->download('penjadwalan.pdf');
     }
 }

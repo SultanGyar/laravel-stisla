@@ -23,6 +23,7 @@
                     <div class="card">
                         <div class="card-body">
                             <a href="{{route('perbaikan.create')}}" class="btn btn-primary mb-3">Tambah</a>
+                            <button class="btn btn-info mb-3" onclick="window.print()">Cetak</button>
                             <div class="table-responsive">
                                 <table class="table table-striped table-md">
                                     <thead>
@@ -53,7 +54,15 @@
                                             <td>{{ $data->kelas }}</td>
                                             <td>{{ $data->keterangan }}</td>
                                             <td>
-                                                <div class="badge badge-success">Open</div>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-success dropdown-toggle" type="button" id="statusDropdown{{ $key }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Open
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="statusDropdown{{ $key }}">
+                                                        <a class="dropdown-item" href="#" onclick="setStatus('Closed', {{ $key }})">Closed</a>
+                                                        <a class="dropdown-item" href="#" onclick="setStatus('Open', {{ $key }})">Open</a>
+                                                    </div>
+                                                </div>
                                             </td>
                                             <td>
                                                 <a href="{{route('perbaikan.edit',$data)}}"
@@ -86,6 +95,19 @@
 @endsection
 
 @push('scripts')
+<script>
+    function setStatus(status, key) {
+        var badge = document.getElementById('statusDropdown' + key);
+        badge.innerHTML = status;
+        if (status === 'Closed') {
+            badge.classList.remove('btn-success');
+            badge.classList.add('btn-danger');
+        } else {
+            badge.classList.remove('btn-danger');
+            badge.classList.add('btn-success');
+        }
+    }
+</script>
 
 <form action="" id="delete-form" method="post">
     @method('delete')

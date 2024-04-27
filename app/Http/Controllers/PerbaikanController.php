@@ -7,6 +7,8 @@ use App\Models\Perbaikan;
 use App\Models\User;
 use App\Models\Peralatan;
 
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+
 class PerbaikanController extends Controller
 {
     public function index()
@@ -106,5 +108,31 @@ class PerbaikanController extends Controller
 
         return redirect()->route('perbaikan.index')
             ->with('success', 'Rekaman perbaikan berhasil dihapus.');
+    }
+
+    public function cetakPdfPerbaikan(Request $request)
+    {
+        // Validasi input tanggal
+        $request->validate([
+            'start_date' => 'required|date',
+            'end_date' => 'required|date'
+        ]);
+
+        // Ambil tanggal awal dan akhir dari input form
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+
+        // Filter data berdasarkan rentang tanggal
+        $perbaikan = Perbaikan::whereBetween('tanggal', [$startDate, $endDate])->get();
+
+        // Load view dengan data yang sudah difilter
+        $pdf = FacadePdf::loadView('perbaikan.cetakpdfperbaikan', [
+            'perbaikan' => $perbaikan,
+            'startDate' => $startDate,
+            'endDate' => $endDate
+        ]);
+
+        // Download PDF
+        return $pdf->download('perbaikan.pdf');
     }
 }

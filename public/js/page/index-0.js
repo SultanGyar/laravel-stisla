@@ -5,10 +5,10 @@ var statistics_chart = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(statistics_chart, {
   type: 'line',
   data: {
-    labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    labels: ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"],
     datasets: [{
       label: 'Statistics',
-      data: [640, 387, 530, 302, 430, 270, 488],
+      data: [64, 38, 53, 30, 43, 27, 48],
       borderWidth: 5,
       borderColor: '#6777ef',
       backgroundColor: 'transparent',
@@ -28,7 +28,7 @@ var myChart = new Chart(statistics_chart, {
           drawBorder: false,
         },
         ticks: {
-          stepSize: 150
+          stepSize: 5
         }
       }],
       xAxes: [{

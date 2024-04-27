@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Penjadwalan;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
 
 class LaporanPenjadwalanController extends Controller
@@ -13,12 +15,13 @@ class LaporanPenjadwalanController extends Controller
      */
     public function index()
     {
-        return view('laporan_penjadwalan.index');
+        $penjadwalan = Penjadwalan::all();
+        return view('laporan_penjadwalan.index', ['penjadwalan' => $penjadwalan]);
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     *  
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -45,8 +48,10 @@ class LaporanPenjadwalanController extends Controller
      */
     public function show($id)
     {
-        //
+        $penjadwalan = Penjadwalan::findOrFail($id);
+        return view('penjadwalan.show', ['penjadwalan' => $penjadwalan]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

@@ -13,41 +13,44 @@
                     <i class="fas fa-fire"></i><span>Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item dropdown {{ request()->is('user', 'peralatan', 'kategori_peralatan', 'point_check') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i><span>Data Master</span></a>
+            <li class="menu-header">Menu</li>
+            <li class="nav-item dropdown {{ request()->is('user*', 'peralatan*', 'kategori_peralatan*', 'point_check*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+                    <i class="fas fa-database"></i><span>Data Master</span>
+                </a>
                 <ul class="dropdown-menu">
-                    <li class="{{ request()->is('user') ? 'active' : '' }}">
+                    <li class="{{ request()->is('user*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('user') }}">User</a>
                     </li>
-                    <li class="{{ request()->is('kategori_peralatan') ? 'active' : '' }}">
+                    <li class="{{ request()->is('kategori_peralatan*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('kategori_peralatan') }}">Kategori Alat</a>
                     </li>
-                    <li class="{{ request()->is('peralatan') ? 'active' : '' }}">
+                    <li class="{{ request()->is('peralatan*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('peralatan') }}">Peralatan</a>
                     </li>
-                    <li class="{{ request()->is('point_check') ? 'active' : '' }}">
+                    <li class="{{ request()->is('point_check*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('point_check') }}">Point Check</a>
                     </li>
                 </ul>
-            </li>
-            <li class="nav-item dropdown {{ request()->is('penjadwalan', 'perbaikan') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i><span>Transaksi</span></a>
+            </li>            
+            <li class="nav-item dropdown {{ request()->is('penjadwalan*', 'perbaikan*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-clipboard-list"></i><span>Transaksi</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ request()->is('penjadwalan') ? 'active' : '' }}">
+                    <li class="{{ request()->is('penjadwalan*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('penjadwalan') }}">Penjadwalan</a>
                     </li>
-                    <li class="{{ request()->is('perbaikan') ? 'active' : '' }}">
+                    <li class="{{ request()->is('perbaikan*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('perbaikan') }}">Perbaikan</a>
                     </li>
                 </ul>
             </li>
-            <li class="nav-item dropdown {{ request()->is('laporan_penjadwalan', 'laporan_perbaikan') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i><span>Laporan</span></a>
+            <li class="nav-item dropdown {{ request()->is('laporan_penjadwalan*', 'laporan_perbaikan*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-file-invoice"></i><span>Laporan</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ request()->is('laporan_penjadwalan') ? 'active' : '' }}">
+                    <li class="{{ request()->is('laporan_penjadwalan*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('laporan_penjadwalan') }}">Laporan Penjadwalan</a>
                     </li>
-                    <li class="{{ request()->is('laporan_perbaikan') ? 'active' : '' }}">
+                    <li class="{{ request()->is('laporan_perbaikan*') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('laporan_perbaikan') }}">Laporan Perbaikan</a>
                     </li>
                 </ul>

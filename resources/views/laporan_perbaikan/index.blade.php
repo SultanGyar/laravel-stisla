@@ -5,7 +5,7 @@
 @push('style')
 <!-- CSS Libraries -->
 @endpush
-
+{{-- ini halaman laporan_perbaikan --}}
 @section('main')
 <div class="main-content">
     <section class="section">
@@ -21,24 +21,20 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-body">
-                            <a href="#" class="btn btn-primary mb-3">Tambah</a>
-                            <div class="table-responsive">
-                                <table class="table table-striped table-md">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Id Perbaikan</th>
-                                            <th>Tanggal</th>
-                                            <th>Nama</th>
-                                            <th>Nama Alat</th>
-                                            <th>Keterangan</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                        <form action="{{ route('cetakPdfPerbaikan') }}" method="post">
+                            @csrf
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Tanggal Awal</label>
+                                    <input type="date" class="form-control" name="start_date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tanggal Akhir</label>
+                                    <input type="date" class="form-control" name="end_date" required>
+                                </div>
+                                <button type="submit" class="btn btn-danger mb-3">Export PDF</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
