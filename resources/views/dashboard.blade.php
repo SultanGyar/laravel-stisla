@@ -84,14 +84,14 @@
                     <div class="col-12 col-sm-12 col-lg-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Summary</h4>
+                                <h4>Rangkuman</h4>
                                 <div class="card-header-action">
                                     <a href="#summary-chart"
                                         data-tab="summary-tab"
                                         class="btn active">Chart</a>
-                                    <a href="#summary-text"
+                                    {{-- <a href="#summary-text"
                                         data-tab="summary-tab"
-                                        class="btn">Text</a>
+                                        class="btn">Text</a> --}}
                                 </div>
                             </div>
                             <div class="card-body">
@@ -118,20 +118,20 @@
                     <div class="col-12 col-sm-12 col-lg-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Statistics</h4>
+                                <h4>Statistik</h4>
                                 <div class="card-header-action">
+                                    {{-- <a href="#"
+                                        class="btn active">Week</a> --}}
                                     <a href="#"
-                                        class="btn active">Week</a>
-                                    <a href="#"
-                                        class="btn">Month</a>
-                                    <a href="#"
-                                        class="btn">Year</a>
+                                        class="btn">April</a>
+                                    {{-- <a href="#"
+                                        class="btn">Year</a> --}}
                                 </div>
                             </div>
                             <div class="card-body">
                                 <canvas id="myChart2"
                                     height="180"></canvas>
-                                <div class="statistic-details mt-1">
+                                {{-- <div class="statistic-details mt-1">
                                     <div class="statistic-details-item">
                                         <div class="text-small text-muted"><span class="text-primary"><i
                                                     class="fas fa-caret-up"></i></span> 7%</div>
@@ -156,7 +156,7 @@
                                         <div class="detail-value">$92,142</div>
                                         <div class="detail-name">This Year</div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 

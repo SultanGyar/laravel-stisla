@@ -10,11 +10,11 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Tambah Penjadwalan</h1>
+            <h1>Tambah Jadwal Perawatan</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-                <div class="breadcrumb-item active"><a href="{{ route('penjadwalan.index') }}">Penjadwalan</a></div>
-                <div class="breadcrumb-item">Tambah Penjadwalan</div>
+                <div class="breadcrumb-item active"><a href="{{ route('penjadwalan.index') }}">Perawatan</a></div>
+                <div class="breadcrumb-item">Tambah Perawatan</div>
             </div>
         </div>
 
@@ -65,12 +65,12 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group" hidden>
                                     <label for="kategori_alat">Kategori Alat</label>
                                     <input id="kategori_alat" type="text"
                                         class="form-control @error('kategori_alat') is-invalid @enderror"
                                         name="kategori_alat" readonly placeholder="Masukan kategori alat"
-                                        value="{{ old('kategori_alat') }}" required>
+                                        value="{{ old('kategori_alat') }}" required >
 
                                     @error('kategori_alat')
                                     <span class="invalid-feedback" role="alert">

@@ -37,10 +37,10 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-clipboard-list"></i><span>Transaksi</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ request()->is('penjadwalan*') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('penjadwalan') }}">Penjadwalan</a>
+                        <a class="nav-link" href="{{ url('penjadwalan') }}">Perawatan Alat</a>
                     </li>
                     <li class="{{ request()->is('perbaikan*') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ url('perbaikan') }}">Perbaikan</a>
+                        <a class="nav-link" href="{{ url('perbaikan') }}">Perbaikan Alat</a>
                     </li>
                 </ul>
             </li>

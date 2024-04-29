@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Penjadwalan')
+@section('title', 'Perawatan')
 
 @push('style')
 </style>
@@ -10,10 +10,10 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Penjadwalan</h1>
+            <h1>Perawatan</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="#">Master</a></div>
-                <div class="breadcrumb-item">Penjadwalan</div>
+                <div class="breadcrumb-item">Perawatan</div>
             </div>
         </div>
         

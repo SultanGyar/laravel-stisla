@@ -37,7 +37,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group" hidden>
                                     <label for="id_user">Level</label>
                                     <input id="id_user" type="text"
                                         class="form-control @error('id_user') is-invalid @enderror" name="id_user"

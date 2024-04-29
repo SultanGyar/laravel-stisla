@@ -29,7 +29,7 @@
                                     <label for="id_alat">ID Alat</label>
                                     <input id="id_alat" type="text"
                                         class="form-control @error('id_alat') is-invalid @enderror" name="id_alat"
-                                        value="{{ $idAlat }}" required autofocus>
+                                        value="{{ $idAlat }}" required autofocus readonly>
 
                                     @error('id_alat')
                                     <span class="invalid-feedback" role="alert">

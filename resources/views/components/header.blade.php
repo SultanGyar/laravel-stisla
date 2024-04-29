@@ -8,7 +8,7 @@
         </ul>
     </form>
     <ul class="navbar-nav navbar-right">
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+        {{-- <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
                 class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
                 <div class="dropdown-header">Messages
@@ -33,7 +33,7 @@
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
-        </li>
+        </li> --}}
         <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
                 class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
@@ -48,11 +48,11 @@
                             <i class="fas fa-code"></i>
                         </div>
                         <div class="dropdown-item-desc">
-                            Template update is available now!
+                            Ada Laporan Kerusakan!
                             <div class="time text-primary">2 Min Ago</div>
                         </div>
                     </a>
-                    <a href="#" class="dropdown-item">
+                    {{-- <a href="#" class="dropdown-item">
                         <div class="dropdown-item-icon bg-info text-white">
                             <i class="far fa-user"></i>
                         </div>
@@ -60,7 +60,7 @@
                             <b>You</b> and <b>Dedik Sugiharto</b> are now friends
                             <div class="time">10 Hours Ago</div>
                         </div>
-                    </a>
+                    </a> --}}
                 </div>
                 <div class="dropdown-footer text-center">
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
